@@ -1,0 +1,422 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="Main_1"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:sd="clr-namespace:System.Data;assembly=System.Data"
+ xmlns:ui="http://schemas.uipath.com/workflow/activities"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>Newtonsoft.Json.Linq</x:String>
+      <x:String>Newtonsoft.Json</x:String>
+      <x:String>RestSharp</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Core</AssemblyReference>
+      <AssemblyReference>UiPath.Core.Activities</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>RestSharp</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Flowchart sap2010:WorkflowViewState.IdRef="Flowchart_1">
+    <Flowchart.Variables>
+      <Variable x:TypeArguments="sd:DataTable" Name="ExcelRead" />
+      <Variable x:TypeArguments="x:String" Name="ReadCSV" />
+      <Variable x:TypeArguments="njl:JObject" Name="JSONObject" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dataTable" />
+      <Variable x:TypeArguments="x:String" Name="rangeStart" />
+    </Flowchart.Variables>
+    <Flowchart.StartNode>
+      <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_2">
+        <ui:ReadRange AddHeaders="False" DataTable="[ExcelRead]" DisplayName="Read range" sap2010:WorkflowViewState.IdRef="ReadRange_1" Range="A36:A46" SheetName="Daily Sheet" WorkbookPath="C:\Users\vsadhu\Desktop\ExchangeRates\Exchange RatesTop60.xlsx" />
+        <FlowStep.Next>
+          <FlowStep x:Name="__ReferenceID1" sap2010:WorkflowViewState.IdRef="FlowStep_3">
+            <ui:WriteCsvFile Encoding="{x:Null}" AddHeaders="True" DataTable="[ExcelRead]" Delimitator="Comma" DisplayName="Write CSV" FilePath="C:\Users\vsadhu\Desktop\Untitled.txt" sap2010:WorkflowViewState.IdRef="WriteCsvFile_1" />
+            <FlowStep.Next>
+              <FlowStep x:Name="__ReferenceID7" sap2010:WorkflowViewState.IdRef="FlowStep_19">
+                <Assign sap2010:WorkflowViewState.IdRef="Assign_3">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[rangeStart]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">36</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <FlowStep.Next>
+                  <FlowStep x:Name="__ReferenceID2" sap2010:WorkflowViewState.IdRef="FlowStep_5">
+                    <ui:ForEachRow DataTable="[ExcelRead]" DisplayName="For each row" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+                      <ui:ForEachRow.Body>
+                        <ActivityAction x:TypeArguments="sd:DataRow">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+                          </ActivityAction.Argument>
+                          <Sequence sap2010:WorkflowViewState.IdRef="Sequence_6">
+                            <If Condition="[String.IsNullOrEmpty(row(0).ToString)]" sap2010:WorkflowViewState.IdRef="If_1">
+                              <If.Then>
+                                <Assign sap2010:WorkflowViewState.IdRef="Assign_5">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:String">[rangeStart]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:String">[(cint(rangeStart)+1).ToString]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                              </If.Then>
+                              <If.Else>
+                                <Sequence DisplayName="Body" sap2010:WorkflowViewState.IdRef="Sequence_1">
+                                  <Sequence.Variables>
+                                    <Variable x:TypeArguments="x:String" Name="currencyCode" />
+                                    <Variable x:TypeArguments="x:String" Name="JSONOutput" />
+                                    <Variable x:TypeArguments="njl:JObject" Name="JArray" />
+                                  </Sequence.Variables>
+                                  <WriteLine DisplayName="Write line" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[&quot;In loop&quot;+row(0).ToString]" />
+                                  <ui:HttpClient Body="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" StatusCode="{x:Null}" Username="{x:Null}" AcceptFormat="JSON" BodyFormat="application/xml" DisplayName="HTTP Request" EndPoint="https://web-services.oanda.com/rates/api/v2/rates/spot.json" sap2010:WorkflowViewState.IdRef="HttpClient_2" Method="GET" Result="[JSONOutput]" TimeoutMS="6000">
+                                    <ui:HttpClient.Attachments>
+                                      <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                                    </ui:HttpClient.Attachments>
+                                    <ui:HttpClient.Headers>
+                                      <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                                    </ui:HttpClient.Headers>
+                                    <ui:HttpClient.Parameters>
+                                      <InArgument x:TypeArguments="x:String" x:Key="api_key">NJaRaD0fUOjQdejE5eWFg3xz</InArgument>
+                                      <InArgument x:TypeArguments="x:String" x:Key="base">USD</InArgument>
+                                      <InArgument x:TypeArguments="x:String" x:Key="quote">[row(0).ToString]</InArgument>
+                                    </ui:HttpClient.Parameters>
+                                    <ui:HttpClient.UrlSegments>
+                                      <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                                    </ui:HttpClient.UrlSegments>
+                                  </ui:HttpClient>
+                                  <WriteLine DisplayName="Write line" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[&quot;Result&quot;+JSONOutput]" />
+                                  <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize json" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[JArray]" JsonString="[JSONOutput]" />
+                                  <WriteLine DisplayName="Write line" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[&quot;After Deserialize json&quot;+JArray(&quot;quotes&quot;).ToString]" />
+                                  <ui:DeserializeJson x:TypeArguments="sd:DataTable" DisplayName="Deserialize json" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_7" JsonObject="[dataTable]" JsonString="[JArray(&quot;quotes&quot;).ToString]" />
+                                  <ui:ForEachRow DataTable="[dataTable]" DisplayName="For each row" sap2010:WorkflowViewState.IdRef="ForEachRow_3">
+                                    <ui:ForEachRow.Body>
+                                      <ActivityAction x:TypeArguments="sd:DataRow">
+                                        <ActivityAction.Argument>
+                                          <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+                                        </ActivityAction.Argument>
+                                        <Sequence DisplayName="Body" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                                          <WriteLine DisplayName="Write line" sap2010:WorkflowViewState.IdRef="WriteLine_7" Text="[row.Item(&quot;midpoint&quot;).ToString]" />
+                                          <ui:WriteCell Cell="[&quot;F&quot;+rangeStart]" DisplayName="Write cell" sap2010:WorkflowViewState.IdRef="WriteCell_2" SheetName="Daily Sheet" Text="[row.Item(&quot;midpoint&quot;).ToString]" WorkbookPath="C:\Users\vsadhu\Desktop\ExchangeRates\Exchange RatesTop60.xlsx" />
+                                          <Assign sap2010:WorkflowViewState.IdRef="Assign_4">
+                                            <Assign.To>
+                                              <OutArgument x:TypeArguments="x:String">[rangeStart]</OutArgument>
+                                            </Assign.To>
+                                            <Assign.Value>
+                                              <InArgument x:TypeArguments="x:String">[(cint(rangeStart)+1).ToString]</InArgument>
+                                            </Assign.Value>
+                                          </Assign>
+                                        </Sequence>
+                                      </ActivityAction>
+                                    </ui:ForEachRow.Body>
+                                  </ui:ForEachRow>
+                                </Sequence>
+                              </If.Else>
+                            </If>
+                          </Sequence>
+                        </ActivityAction>
+                      </ui:ForEachRow.Body>
+                    </ui:ForEachRow>
+                  </FlowStep>
+                </FlowStep.Next>
+              </FlowStep>
+            </FlowStep.Next>
+          </FlowStep>
+        </FlowStep.Next>
+      </FlowStep>
+    </Flowchart.StartNode>
+    <x:Reference>__ReferenceID0</x:Reference>
+    <x:Reference>__ReferenceID1</x:Reference>
+    <x:Reference>__ReferenceID2</x:Reference>
+    <FlowStep x:Name="__ReferenceID4" sap2010:WorkflowViewState.IdRef="FlowStep_7">
+      <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize json" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_6" JsonObject="[JSONObject]" JsonString="[ReadCSV]" />
+      <FlowStep.Next>
+        <FlowStep x:Name="__ReferenceID3" sap2010:WorkflowViewState.IdRef="FlowStep_8">
+          <WriteLine DisplayName="Write line" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="[JSONObject(&quot;quotes&quot;).ToString]" />
+          <FlowStep.Next>
+            <FlowStep x:Name="__ReferenceID6" sap2010:WorkflowViewState.IdRef="FlowStep_18">
+              <ui:DeserializeJson x:TypeArguments="sd:DataTable" DisplayName="Deserialize json" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_8" JsonObject="[dataTable]" JsonString="[JSONObject(&quot;quotes&quot;).ToString]" />
+              <FlowStep.Next>
+                <FlowStep x:Name="__ReferenceID5" sap2010:WorkflowViewState.IdRef="FlowStep_17">
+                  <ui:ForEachRow DataTable="[dataTable]" DisplayName="For each row" sap2010:WorkflowViewState.IdRef="ForEachRow_5">
+                    <ui:ForEachRow.Body>
+                      <ActivityAction x:TypeArguments="sd:DataRow">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+                        </ActivityAction.Argument>
+                        <Sequence DisplayName="Body" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                          <WriteLine DisplayName="Write line" sap2010:WorkflowViewState.IdRef="WriteLine_9" Text="[row.Item(&quot;midpoint&quot;).ToString]" />
+                        </Sequence>
+                      </ActivityAction>
+                    </ui:ForEachRow.Body>
+                  </ui:ForEachRow>
+                </FlowStep>
+              </FlowStep.Next>
+            </FlowStep>
+          </FlowStep.Next>
+        </FlowStep>
+      </FlowStep.Next>
+    </FlowStep>
+    <x:Reference>__ReferenceID3</x:Reference>
+    <FlowStep sap2010:WorkflowViewState.IdRef="FlowStep_9">
+      <ui:ReadTextFile Content="[ReadCSV]" DisplayName="Read text file" FileName="C:\Users\vsadhu\Desktop\Untitled.txt" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
+      <FlowStep.Next>
+        <x:Reference>__ReferenceID4</x:Reference>
+      </FlowStep.Next>
+    </FlowStep>
+    <x:Reference>__ReferenceID5</x:Reference>
+    <x:Reference>__ReferenceID6</x:Reference>
+    <x:Reference>__ReferenceID7</x:Reference>
+    <sads:DebugSymbol.Symbol>d0hcXGpqY3VzbmJmcHMwNi5uYS5qbmouY29tXGhvbWVpJFx2c2FkaHVcVWlQYXRoXEV4Y2hhbmdlUmF0ZVJQQVxNYWluLnhhbWw1RAPbAQ8CAQFOCU6BAgIBP1ENUesBAgE7VBFbGgIBN14VpwElAgECTjROQQIBQ06PAU6YAQIBQk6jAU6wAQIBQU6+AU7+AQIBQFFOUVsCAT1RkQFRtwECATxZPFk+AgE6Vj1WSQIBOF4uXjsCATVkG6QBJgIBA2UdowEiAgEEZStlVAIBBWchbioCATBxIaEBLAIBBmxMbGsCATNpTWlZAgExdyN3pAECAS54I4cBMwIBJogBI4gBngECASOJASOJAdwBAgEeigEjigHHAQIBHIsBI4sB+QECARiMASOgATMCAQd3enehAQIBL4IBXIIBbQIBLXieBHikBAIBLIABXoABdgIBK4EBW4EBXgIBKniFBHiTBAIBKHiEA3jBAwIBJ4gBeogBmwECASSJAcsBiQHZAQIBIYkBtQGJAb8BAgEfigF6igHEAQIBHYsBzwGLAfYBAgEbiwG2AYsBwwECARmMATyMAUkCARaSASmdATQCAQiTASuTAbABAgEUlAErlAG7AgIBDpUBK5wBNAIBCZMBggGTAa0BAgEVlAE+lAFaAgESlAG/AZQB6gECARGUAawBlAG5AQIBEJQB+AGUAbgCAgEPmgFWmgF1AgEMlwFXlwFjAgEK</sads:DebugSymbol.Symbol>
+  </Flowchart>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="ReadRange_1" sap:VirtualizedContainerService.HintSize="200,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WriteCsvFile_1" sap:VirtualizedContainerService.HintSize="200,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_3" sap:VirtualizedContainerService.HintSize="242,60">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_5" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="WriteLine_3" sap:VirtualizedContainerService.HintSize="314,61" />
+      <sap2010:ViewStateData Id="HttpClient_2" sap:VirtualizedContainerService.HintSize="314,22">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WriteLine_1" sap:VirtualizedContainerService.HintSize="314,61" />
+      <sap2010:ViewStateData Id="DeserializeJson`1_1" sap:VirtualizedContainerService.HintSize="314,60" />
+      <sap2010:ViewStateData Id="WriteLine_2" sap:VirtualizedContainerService.HintSize="314,61" />
+      <sap2010:ViewStateData Id="DeserializeJson`1_7" sap:VirtualizedContainerService.HintSize="314,60" />
+      <sap2010:ViewStateData Id="WriteLine_7" sap:VirtualizedContainerService.HintSize="314,61" />
+      <sap2010:ViewStateData Id="WriteCell_2" sap:VirtualizedContainerService.HintSize="314,115" />
+      <sap2010:ViewStateData Id="Assign_4" sap:VirtualizedContainerService.HintSize="314,60" />
+      <sap2010:ViewStateData Id="Sequence_3" sap:VirtualizedContainerService.HintSize="336,440">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ForEachRow_3" sap:VirtualizedContainerService.HintSize="314,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="200,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="If_1" sap:VirtualizedContainerService.HintSize="467,208" />
+      <sap2010:ViewStateData Id="Sequence_6" sap:VirtualizedContainerService.HintSize="489,332">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ForEachRow_1" sap:VirtualizedContainerService.HintSize="200,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_5">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">10,524.5</av:Point>
+            <av:Size x:Key="ShapeSize">200,51</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_19">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">9,350</av:Point>
+            <av:Size x:Key="ShapeSize">242,60</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">130,410 130,440 110,440 110,524.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_3">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">0,234.5</av:Point>
+            <av:Size x:Key="ShapeSize">200,51</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">100,285.5 100,315.5 130,315.5 130,350</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">10,144.5</av:Point>
+            <av:Size x:Key="ShapeSize">200,51</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">110,195.5 110,225.5 100,225.5 100,234.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="DeserializeJson`1_6" sap:VirtualizedContainerService.HintSize="314,60" />
+      <sap2010:ViewStateData Id="WriteLine_4" sap:VirtualizedContainerService.HintSize="211,61">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="DeserializeJson`1_8" sap:VirtualizedContainerService.HintSize="314,60" />
+      <sap2010:ViewStateData Id="WriteLine_9" sap:VirtualizedContainerService.HintSize="211,61" />
+      <sap2010:ViewStateData Id="Sequence_5" sap:VirtualizedContainerService.HintSize="233,185">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ForEachRow_5" sap:VirtualizedContainerService.HintSize="200,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_17">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">330,544.5</av:Point>
+            <av:Size x:Key="ShapeSize">200,51</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_18">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">263,430</av:Point>
+            <av:Size x:Key="ShapeSize">314,60</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">420,490 420,520 430,520 430,544.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">304.5,319.5</av:Point>
+            <av:Size x:Key="ShapeSize">211,61</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">410,380.5 410,410.5 420,410.5 420,430</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_7">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">283,210</av:Point>
+            <av:Size x:Key="ShapeSize">314,60</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">440,270 440,300 410,300 410,319.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ReadTextFile_1" sap:VirtualizedContainerService.HintSize="200,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_9">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">340,124.5</av:Point>
+            <av:Size x:Key="ShapeSize">200,51</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">440,175.5 440,210</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Flowchart_1" sap:VirtualizedContainerService.HintSize="658,746">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
+            <av:Size x:Key="ShapeSize">60,75</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,107.5 110,107.5 110,144.5</av:PointCollection>
+            <x:Double x:Key="Width">644.5</x:Double>
+            <x:Double x:Key="Height">709.80000000000018</x:Double>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Main_1" sap:VirtualizedContainerService.HintSize="698,826" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>
