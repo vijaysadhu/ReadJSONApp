@@ -1,0 +1,33 @@
+{
+    "meta": {
+        "effective_params": {
+            "data_set": "OANDA",
+            "base_currencies": [
+                "USD"
+            ],
+            "quote_currencies": [
+                "CAD",
+                "JPY"
+            ]
+        },
+        "endpoint": "spot",
+        "request_time": "2018-09-26T19:19:13+00:00",
+        "skipped_currency_pairs": []
+    },
+    "quotes": [
+        {
+            "base_currency": "USD",
+            "quote_currency": "CAD",
+            "bid": "1.29966",
+            "ask": "1.29984",
+            "midpoint": "1.29975"
+        },
+        {
+            "base_currency": "USD",
+            "quote_currency": "JPY",
+            "bid": "112.784",
+            "ask": "112.800",
+            "midpoint": "112.792"
+        }
+    ]
+}
